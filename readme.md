@@ -3,7 +3,7 @@
 PHP script with html front-end to generate packed CSS sprites.
 
 ## Features
-* Uses texture packing algorithm that is often used in game industry (thanks to @jakesgordon for [that one](https://github.com/jakesgordon/sprite-factory), had to learn ruby syntax to convert it to PHP)
+* Uses texture packing algorithm that is often used in game industry (thanks to [@jakesgordon](https://github.com/jakesgordon) for [that one](https://github.com/jakesgordon/sprite-factory), had to learn ruby syntax to convert it to PHP)
 * Supports CSS, LESS, Stylus syntax
 * Mixins for LESS and Stylus as an option
 
