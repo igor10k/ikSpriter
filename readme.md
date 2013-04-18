@@ -30,3 +30,5 @@ $_POST['group'] // if isset then group selectors for the image declaration
 
 
 There are still a lot of optimizations can be done, but I realized that this will never be published if I will wail till it's perfect. It works and does its job and I'm satisfied with that.
+
+*Special thanks to [SlKelevro](https://github.com/SlKelevro) for his help and advices. :)*
