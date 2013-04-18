@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ikSpriter</title>
+	<link rel="stylesheet" href="css/style.css" media="all">
+</head>
+<body>
+	<div id="wrap">
+		<form enctype="multipart/form-data" method="post" action="api.php" id="form">
+		<fieldset>
+			<input type="text" name="prefix" id="prefix" value="sprite_">
+
+			<div class="files_wrap">
+				<input type="file" name="files[]" id="files" accept="image/gif,image/png,image/jpeg" multiple>
+			</div>
+
+			<div class="type">
+				<ul>
+					<li><label for="type-css"><input type="radio" name="type" id="type-css" value="css"> CSS</label></li>
+					<li><label for="type-lessm"><input type="radio" name="type" id="type-lessm" value="lessm"> LESS Mixins</label></li>
+					<li><label for="type-stylus"><input type="radio" name="type" id="type-stylus" value="stylus" checked> Stylus</label></li>
+					<li><label for="type-stylusm"><input type="radio" name="type" id="type-stylusm" value="stylusm"> Stylus Mixins</label></li>
+				</ul>
+				<label for="group"><input type="checkbox" name="group" id="group"> group selectors</label>
+			</div>
+
+			<button type="submit" id="send" data-processingtext="Please wait...">Create sprite, please</button>
+		</fieldset>
+		</form>
+
+		<div id="errors"></div>
+
+		<div id="sprite"></div>
+
+		<div id="preview"></div>
+
+		<div class="css_wrap"><pre id="css"></pre></div>
+
+		<div id="info">
+			<ul>
+				<li>Old Size: <span id="old_size">-</span></li>
+				<li>New Size: <span id="new_size">-</span></li>
+				<li>Width: <span id="width">-</span></li>
+				<li>Height: <span id="height">-</span></li>
+			</ul>
+		</div>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	<script src="js/vendor/ZeroClipboard.min.js"></script>
+
+	<script src="js/main.js"></script>
+</body>
+</html>

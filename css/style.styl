@@ -1,0 +1,176 @@
+@import 'nib'
+@import 'normalize'
+
+html
+body
+	height 100%
+
+html
+button
+input
+select
+textarea
+	font 12px/1.2 Noteworthy, Arial, Helvetica, FreeSans, "Liberation Sans", "Nimbus Sans L", sans-serif
+
+code
+kbd
+pre
+samp
+#prefix
+	font 12px/1.2 Menlo, DejaVuSansMono, "Courier New", monospace
+
+body
+	background #FEFEE7
+
+fieldset
+	border none
+
+#wrap
+	min-height 100%
+	padding 0 50px
+	overflow hidden
+	background #FEFEE7
+
+#form
+	position relative; z-index 1
+	margin 0 -50px 30px; padding 30px 50px
+	background #A4D0C4
+	box-shadow inset 0 -9px 10px -10px rgba(0,0,0,0.3), 0 -5px 5px 5px rgba(0,0,0,0.3)
+	text-align center
+
+	ul
+		display inline-block
+		vertical-align middle
+		margin 0; padding 0
+		list-style none
+		text-align left
+
+	li
+		padding 2px 10px
+
+.files_wrap
+	display inline-block
+	vertical-align middle
+	margin 10px; padding 10px
+	border-radius 5px
+	background darken(#A4D0C4, 10%)
+	box-shadow inset 0 1px 5px rgba(0,0,0,0.5)
+
+#prefix
+	width 100px; height 16px
+	margin 10px; padding 5px
+	border none
+	border-radius 3px
+	box-shadow inset 0 1px 3px rgba(0,0,0,0.5)
+
+.type
+	display inline-block
+
+#send
+	width 230px
+	margin 10px; padding 10px 0
+	border none
+	border-radius 20px
+	background #72C4B9
+	box-shadow inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 0 rgba(0,0,0,0.2)
+	cursor pointer
+	font-size 15px; line-height 18px
+	text-transform uppercase
+	text-align center
+	color #FFF
+
+	&:hover
+	&.hover
+		background darken(@background, 10%);
+
+	&.active
+		background #CCC;
+
+	&:disabled
+		opacity 0.5
+		cursor default
+
+#errors
+	display none
+	margin-bottom 30px
+	font-size 18px
+	text-align center
+	color #A81A61
+
+#sprite
+	display none
+	margin 0 0 30px
+	font-size 20px
+	text-align center
+
+	a
+		color #489078
+
+#preview
+	position relative
+	height 0
+	margin-bottom 0
+	perspective 1000
+
+	&.shown
+		height auto
+		margin-bottom 30px
+
+	img
+		position relative
+		top -400px; left 50%
+		background #FFF
+		opacity 0
+		box-shadow 0 0 30px rgba(0,0,0,0.5);
+		transform rotateX(-90deg) rotate(-20deg) scale(1.5)
+
+		&.shown
+			top 0
+			opacity 1
+			box-shadow 0 0 10px rgba(0,0,0,0.5);
+			transform rotateX(0) rotate(0) scale(1)
+
+		&.dark
+			background #000
+
+	&,
+	img
+		transition 1s all
+
+#show_img
+	@extend #send
+	width 20px; height 20px
+	padding 0; margin-left 10px
+	font 16px/20px Helvetica, Arial, FreeSans, "Liberation Sans", "Nimbus Sans L", sans-serif
+
+.css_wrap
+	position relative
+
+#css
+	display none
+	margin 0 0 30px; padding 20px
+	border-radius 5px
+	box-shadow inset 0 0 10px rgba(0,0,0,0.5);
+
+.copy_css_wrap
+	position absolute
+	top 10px; right 10px
+	@extend #show_img
+
+#copy_css
+	display block
+	height 19px
+	padding-top 1px
+
+#info
+	display none
+	padding-bottom 30px
+
+	ul
+		margin 0; padding 0
+		list-style none
+		text-align center
+
+		li
+			display inline-block
+			padding-right 20px
