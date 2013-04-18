@@ -19,18 +19,15 @@ class Spriter {
 			$images[$index]['h']      = $wh[1] + $vmargin;
 		}
 
-		$compare = function($first, $second) {
-			return $first > $second ? 1 : ($first < $second ? -1 : 0);
+		$compare = function ($first, $second) {
+			return $first - $second;
 		};
 
 		usort($images, function ($a, $b) use ($compare) {
-			$sizeA = array($a['w'], $a['h']);
-			$sizeB = array($b['w'], $b['h']);
-
-			$diff = $compare(max($sizeB), max($sizeA));
-			$diff or $diff = $compare(min($sizeB), min($sizeA));
-			$diff or $diff = $compare($sizeB[1], $sizeA[1]);
-			$diff or $diff = $compare($sizeB[0], $sizeA[0]);
+			$diff = $compare(max($b['w'], $b['h']), max($a['w'], $a['h']));
+			$diff or $diff = $compare(min($b['w'], $b['h']), min($a['w'], $a['h']));
+			$diff or $diff = $compare($b['h'], $a['h']);
+			$diff or $diff = $compare($b['w'], $a['w']);
 
 			return $diff;
 		});
@@ -214,32 +211,23 @@ if (! empty($_FILES['files']['size'][0])) {
 		)));
 	}
 
-	$sprite = $sprite['img'];
+	$sprite     = $sprite['img'];
+	$foldername = uniqid(mt_rand());
 
-	do {
-		$foldername = '';
-		$length     = 20;
-		$possible   = '123467890abcdfghjkmnpqrtvwxyzABCDFGHJKLMNPQRTVWXYZ';
-
-		for ($i=0; $i < $length; $i++) {
-			$foldername .= substr($possible, mt_rand(0, strlen($possible) - 1), 1);
-		}
-	} while (is_dir('uploads/' . $foldername));
-
-	mkdir(dirname(__FILE__) . '/uploads/' . $foldername);
-	imagepng($sprite, dirname(__FILE__) . '/uploads/' . $foldername . '/sprite.png');
+	mkdir(__DIR__ . '/uploads/' . $foldername);
+	imagepng($sprite, __DIR__ . '/uploads/' . $foldername . '/sprite.png');
 
 	$info = $wh;
 	$info['url'] = 'uploads/' . $foldername . '/sprite.png';
 
 	$oldSize = 0;
 
-	$prefix = isset($_POST['prefix']) ? $_POST['prefix'] : '';
-	$isCss = ($_POST['type'] == 'css') ? true : false;
-	$isLessM = $_POST['type'] == 'lessm' ? true : false;
-	$isStylus = $_POST['type'] == 'stylus' ? true : false;
-	$isStylusM = $_POST['type'] == 'stylusm' ? true : false;
-	$isGroup = isset($_POST['group']) ? true : false;
+	$prefix    = isset($_POST['prefix']) ? $_POST['prefix'] : '';
+	$isCss     = $_POST['type'] === 'css';
+	$isLessM   = $_POST['type'] === 'lessm';
+	$isStylus  = $_POST['type'] === 'stylus';
+	$isStylusM = $_POST['type'] === 'stylusm';
+	$isGroup   = isset($_POST['group']);
 
 	if ($isCss) {
 		$cssTop = '.sprite';
@@ -301,7 +289,7 @@ if (! empty($_FILES['files']['size'][0])) {
 	}
 
 	$info['oldSize'] = $oldSize;
-	$info['newSize'] = filesize(dirname(__FILE__) . '/uploads/' . $foldername . '/sprite.png');
+	$info['newSize'] = filesize(__DIR__ . '/uploads/' . $foldername . '/sprite.png');
 	$info['css']     = $css;
 
 	imagedestroy($sprite);
