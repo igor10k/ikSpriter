@@ -165,7 +165,7 @@ class Spriter {
 		imagealphablending($img, false);
 		imagesavealpha($img, true);
 
-		$msg = '';
+		$error = '';
 
 		foreach ($this->images as $index => $image) {
 			switch (pathinfo($image['name'], PATHINFO_EXTENSION)) {
@@ -181,15 +181,15 @@ class Spriter {
 				break;
 			};
 			if (!$subimg) {
-				$msg .= 'Error loading ' . $image['name'] . "\n";
-			} else if (empty($msg)) {
+				$error .= 'Error loading ' . $image['name'] . "<br>\n";
+			} else if (empty($error)) {
 				imagecopy($img, $subimg, $image['x'], $image['y'], 0, 0, $image['width'], $image['height']);
 			}
 		}
 		if (!empty($error)) {
 			return array(
 				'error' => true,
-				'msg' => $msg
+				'msg' => $error
 			);
 		}
 		return array(
