@@ -276,13 +276,13 @@ if (! empty($_FILES['files']['size'][0])) {
 	}
 
 	if ($isStylusM) {
-		$cssTop = 'sprite ()' . "\n\tbackground url(\"sprite.png\") no-repeat\n\n";
+		$cssTop = 'sprite()' . "\n\tbackground url(\"sprite.png\") no-repeat\n\n";
 		$css = '';
 
 		foreach ($spriter->images as $index => $image) {
 			$selector = $prefix . pathinfo($image['name'], PATHINFO_FILENAME);
 			$oldSize += $image['size'];
-			$css .= $selector .' (x = 0, y = 0)' . "\n\t" . 'background-position (' . ($image['cssx'] ? (-$image['cssx'] . 'px') : '0') . ' + x) (' . ($image['cssy'] ? (-$image['cssy'] . 'px') : '0') . ' + y)' . "\n\n";
+			$css .= $selector .'(x = 0, y = 0)' . "\n\t" . 'background-position (' . ($image['cssx'] ? (-$image['cssx'] . 'px') : '0') . ' + x) (' . ($image['cssy'] ? (-$image['cssy'] . 'px') : '0') . ' + y)' . "\n\n";
 		}
 
 		$css = $cssTop . $css;
