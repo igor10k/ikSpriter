@@ -19,7 +19,7 @@ $(function () {
 	var clip;
 
 	$("[name='type']").on("change", function () {
-		if (this.value === "lessm" || this.value === "stylusm") {
+		if (this.value === "lessm") {
 			$("#group").attr("disabled", "disabled");
 		} else {
 			$("#group").removeAttr("disabled");
